@@ -30,11 +30,28 @@ li#navbar a:hover {
   color: #CE5937
 }
 
-li a {
-  color: white
+a:link {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
 }
-li a:visited {
-  color: lightgray
+
+a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #CE5937;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: #CE5937;
+  background-color: transparent;
+  text-decoration: underline;
 }
 
 body {

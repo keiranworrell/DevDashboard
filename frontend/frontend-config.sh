@@ -18,7 +18,7 @@ for org in ${orgList}; do
         if [[ ${actionList} != "null" && ${actionList} != "" && ${actionList} != "0" ]]; then
             actionLinks="${actionLinks}<h2>${org}/${repo} - Actions</h2><ul>\n"
             for action in ${actionList}; do
-                actionLinks="${actionLinks}<li><a href='https://github.com/${org}/${repo}/actions/workflows/${action}'>`yq \".devDash.${org}.${repo}.actions.${action}\" /mnt/config.yaml`</a></li>\n"
+                actionLinks="${actionLinks}<li><a href='https://github.com/${org}/${repo}/actions/workflows/${action}'>`yq \".devDash.${org}.${repo}.actions.${action}[]\" /mnt/config.yaml`</a></li>\n"
             done
             actionLinks="${actionLinks}</ul>\n"
         fi
