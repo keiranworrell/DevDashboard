@@ -15,6 +15,15 @@ spec:
       containers:
       - name: dev-dash
         imagePullPolicy: IfNotPresent
-        image: dev-dash:v1
+        image: worrellkeiran/dev-dash:v0.0.4
         ports:
         - containerPort: 80
+      volumeMounts:
+      - mountPath: /mnt
+        name: dash-config-volume
+      imagePullSecrets:
+      - name: regcred
+    volumes:
+      - configMap:
+          name: dash-config
+        name: dash-config-volume

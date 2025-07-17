@@ -2,7 +2,7 @@ devDash:
   keiranworrell:
     DevDashboard:
       actions:
-        - null
+        buildAndPush.yaml: Image Build and Push
     MovieGuess:
       actions:
         build.yml: CI build
