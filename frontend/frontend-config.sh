@@ -15,7 +15,7 @@ for org in ${orgList}; do
         actionList=`yq ".devDash.${org}.${repo}.actions | keys[]" /mnt/config.yaml`
         echo "actionList:"
         echo ${actionList}
-        if [[ ${actionList} != "null" && ${actionList} != "" ]]; then
+        if [[ ${actionList} != "null" && ${actionList} != "" && ${actionList} != "0" ]]; then
             actionLinks="${actionLinks}<h2>${org}/${repo} - Actions</h2><ul>\n"
             for action in ${actionList}; do
                 actionLinks="${actionLinks}<li><a href='https://github.com/${org}/${repo}/actions/workflows/${action}'>`yq \".devDash.${org}.${repo}.actions.${action}\" /mnt/config.yaml`</a></li>\n"
@@ -28,6 +28,8 @@ echo "repoLinks:"
 echo ${repoLinks}
 sed -i "s|<placeholder>|${repoLinks}|" /usr/share/nginx/html/index.html
 
+echo "actionLinks:"
+echo ${actionLinks}
 sed -i "s|<actionsPlaceholder>|${actionLinks}|" /usr/share/nginx/html/actions.html
 
 sed -i "s|convenient|useful|" /usr/share/nginx/html/index.html
