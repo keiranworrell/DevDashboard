@@ -23,4 +23,4 @@ jobs:
       with:
        context:
        push: true
-       tags: keiranworrell/dev-dash:latest,keiranworrell/dev-dash:v0.0.${{github.run_number}}
+       tags: ${{ secrets.DOCKERHUB_USERNAME }}/dev-dash:latest,${{ secrets.DOCKERHUB_USERNAME }}/dev-dash:v0.0.${{github.run_number}}
