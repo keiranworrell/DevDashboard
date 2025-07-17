@@ -4,6 +4,7 @@ orgs=""
 orgList=`yq '.devDash | keys[]' /mnt/config.yaml`
 echo "orgList:"
 echo ${orgList}
+actionLinks=""
 for org in ${orgList}; do
     repoLinks=""
     repoList=`yq ".devDash.${org} | keys[]" /mnt/config.yaml`
@@ -11,7 +12,6 @@ for org in ${orgList}; do
     echo ${repoList}
     for repo in ${repoList}; do
         repoLinks="${repoLinks}<li><a href='https://github.com/${org}/${repo}'>${org}/${repo}</a></li>\n"
-        actionLinks=""
         actionList=`yq ".devDash.${org}.${repo}.actions | keys[]" /mnt/config.yaml`
         echo "actionList:"
         echo ${actionList}
