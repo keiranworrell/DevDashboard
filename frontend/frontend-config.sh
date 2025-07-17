@@ -28,6 +28,6 @@ echo "repoLinks:"
 echo ${repoLinks}
 sed -i "s|<placeholder>|${repoLinks}|" /usr/share/nginx/html/index.html
 
-
+sed -i "s|<actionsPlaceholder>|${actionLinks}|" /usr/share/nginx/html/actions.html
 
 sed -i "s|convenient|useful|" /usr/share/nginx/html/index.html
