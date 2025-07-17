@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-dash
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dev-dash
+  template:
+    metadata:
+      labels:
+        app: dev-dash
+    spec:
+      containers:
+      - name: dev-dash
+        imagePullPolicy: IfNotPresent
+        image: dev-dash:v1
+        ports:
+        - containerPort: 80
