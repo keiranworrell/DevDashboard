@@ -4,7 +4,7 @@ actions=[]
 async function updateStatus() {
     for (let action of actions) {
         try {
-            const res = await fetch('/status/'.concat(action)); // Backend proxy endpoint
+            const res = await fetch('http://dev-dash-back:8000/status/'.concat(action)); // Backend proxy endpoint
             const data = await res.json();
             const statusDiv = document.getElementById('gh-status-'.concat(action) + org);
             statusDiv.innerHTML = `
