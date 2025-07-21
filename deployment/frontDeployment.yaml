@@ -15,7 +15,7 @@ spec:
       containers:
       - name: dev-dash-front
         imagePullPolicy: IfNotPresent
-        image: worrellkeiran/dev-dash:v0.0.15
+        image: worrellkeiran/dev-dash:v0.0.2
         ports:
         - containerPort: 80
         volumeMounts:
