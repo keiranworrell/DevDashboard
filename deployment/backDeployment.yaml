@@ -13,23 +13,24 @@ spec:
         app: dev-dash-back
     spec:
       containers:
-        - name: dev-dash-back
-          image: worrellkeiran/dev-dash-back:v0.0.3
-          ports:
-            - containerPort: 8000
-          volumeMounts:
-          - mountPath: /mnt
-            name: dash-config-volume
-          env:
-            - name: UVICORN_PORT
-              value: "8000"
-            - name: GITHUB_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: gh-token-secret
-                  key: password
-        imagePullSecrets:
-        - name: regcred
+      - name: dev-dash-back
+        imagePullPolicy: IfNotPresent
+        image: worrellkeiran/dev-dash-back:v0.0.4
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /mnt
+          name: dash-config-volume
+        env:
+        - name: UVICORN_PORT
+          value: "8000"
+        - name: GITHUB_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: gh-token-secret
+              key: password
+      imagePullSecrets:
+      - name: regcred
       volumes:
         - configMap:
             name: dash-config
