@@ -2,15 +2,11 @@
 
 orgs=""
 orgList=`yq '.devDash | keys[]' /mnt/config.yaml`
-echo "orgList:"
-echo ${orgList}
 actionLinks=""
 actionsArr="["
 for org in ${orgList}; do
     repoLinks=""
     repoList=`yq ".devDash.${org} | keys[]" /mnt/config.yaml`
-    echo "repoList:"
-    echo ${repoList}
     for repo in ${repoList}; do
         repoLinks="${repoLinks}<li><a href='https://github.com/${org}/${repo}'>${org}/${repo}</a></li>\n"
         actionList=`yq ".devDash.${org}.${repo}.actions | keys[]" /mnt/config.yaml`
@@ -28,6 +24,7 @@ for org in ${orgList}; do
         fi
     done
 done
+
 echo "actionsArr:"
 echo "${actionsArr::-1}]"
 sed -i "s|actions=[]|${actionsArr::-1}]|" script.js
