@@ -10,8 +10,11 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
+# Copy dependency files first for efficient caching
+COPY backend/requirements.txt .
+
 # Install Python dependencies
-RUN pip install --no-cache-dir -r backend/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the backend source code
 COPY backend/. .
