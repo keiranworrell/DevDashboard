@@ -5,6 +5,7 @@ orgList=`yq '.devDash | keys[]' /mnt/config.yaml`
 echo "orgList:"
 echo ${orgList}
 actionLinks=""
+actionsArr="["
 for org in ${orgList}; do
     repoLinks=""
     repoList=`yq ".devDash.${org} | keys[]" /mnt/config.yaml`
@@ -18,12 +19,18 @@ for org in ${orgList}; do
         if [[ ${actionList} != "null" && ${actionList} != "" && ${actionList} != "0" ]]; then
             actionLinks="${actionLinks}<h2>${org}/${repo} - Actions</h2><ul>\n"
             for action in ${actionList}; do
-                actionLinks="${actionLinks}<li><a href='https://github.com/${org}/${repo}/actions/workflows/${action}'>`yq \".devDash.${org}.${repo}.actions[]\" /mnt/config.yaml`</a></li>\n"
+                action=`echo ${action} | cut -f1 -d'.'`
+                actionLinks="${actionLinks}<li><div id=\"gh-status-${org}-${repo}-${action}\">Loading...</div></li>\n"
+                
+                actionsArr="${actionsArr}\"${org}-${repo}-${action}\", "
             done
             actionLinks="${actionLinks}</ul>\n"
         fi
     done
 done
+echo "actionsArr:"
+echo "${actionsArr::-1}]"
+sed -i "s|actions=[]|${actionsArr::-1}]" script.js
 echo "repoLinks:"
 echo ${repoLinks}
 sed -i "s|<placeholder>|${repoLinks}|" /usr/share/nginx/html/index.html

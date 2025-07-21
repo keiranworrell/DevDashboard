@@ -1,8 +1,12 @@
+
+
+
 devDash:
   keiranworrell:
     DevDashboard:
       actions:
-        buildAndPush.yaml: Image Build and Push
+        buildAndPushFront.yaml: CI Frontend
+        buildAndPushBack.yaml: CI Backend
     MovieGuess:
       actions:
         build.yml: CI build

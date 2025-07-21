@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dev-dash
+  name: dev-dash-front
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: dev-dash
+      app: dev-dash-front
   template:
     metadata:
       labels:
-        app: dev-dash
+        app: dev-dash-front
     spec:
       containers:
-      - name: dev-dash
+      - name: dev-dash-front
         imagePullPolicy: IfNotPresent
-        image: worrellkeiran/dev-dash:v0.0.14
+        image: worrellkeiran/dev-dash:v0.0.15
         ports:
         - containerPort: 80
         volumeMounts:

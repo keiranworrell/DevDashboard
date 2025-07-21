@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dev-dash-back
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev-dash-back
+  template:
+    metadata:
+      labels:
+        app: dev-dash-back
+    spec:
+      containers:
+        - name: dev-dash-back
+          image: worrellkeiran/dev-dash-back:v0.0.1
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+          - mountPath: /mnt
+            name: dash-config-volume
+          env:
+            - name: UVICORN_PORT
+              value: "8000"
+            - name: GITHUB_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: gh-token-secret
+                  key: password
+        imagePullSecrets:
+        - name: regcred
+      volumes:
+        - configMap:
+            name: dash-config
+          name: dash-config-volume
