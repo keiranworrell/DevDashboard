@@ -24,4 +24,4 @@ jobs:
        context:
        push: true
        file: backend/Dockerfile
-       tags: ${{ secrets.DOCKERHUB_USERNAME }}/dev-dash-back:latest,${{ secrets.DOCKERHUB_USERNAME }}/dev-dash-back:v0.0.${{github.run_number}}
+       tags: ${{ secrets.DOCKERHUB_USERNAME }}/devdash-back:latest,${{ secrets.DOCKERHUB_USERNAME }}/devdash-back:v0.0.${{github.run_number}}
