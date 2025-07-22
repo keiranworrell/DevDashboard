@@ -7,7 +7,7 @@ async function updateStatus() {
             console.log("Calling API...");
             const res = await fetch('/status/'.concat(action)); // Backend proxy endpoint
             const data = await res.json();
-            const statusDiv = document.getElementById('gh-status-'.concat(action) + org);
+            const statusDiv = document.getElementById('gh-status-'.concat(action));
             statusDiv.innerHTML = `
                 Workflow: ${data.name} <br>
                 Status: <span style="color:${data.status === 'success' ? 'green' : 'red'}">${data.status}</span>
