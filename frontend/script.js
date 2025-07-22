@@ -10,7 +10,7 @@ async function updateStatus() {
             const statusDiv = document.getElementById('gh-status-'.concat(action));
             statusDiv.innerHTML = `
                 Workflow: ${data.name} <br>
-                Status: <span style="color:${data.status === 'success' ? 'green' : 'red'}">${data.status}</span>
+                Status: <span style="color:${data.status === 'success' ? 'green' : 'red'}">${data.status}</span> at ${data.timestamp}
                 <br><a href="${data.html_url}" target="_blank">View on GitHub</a>
             `;
         } catch (err) {

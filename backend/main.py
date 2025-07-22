@@ -29,7 +29,6 @@ for org, repos in dev_dash.items():
                     workflows.append({"org": org, "repo": repo, "workflow": item, "display_name": item})
 
 def get_github_status(org, repo, workflow):
-    print(f"Getting status for: {GITHUB_API}/repos/{org}/{repo}/actions/workflows/{workflow}")
     url = f"{GITHUB_API}/repos/{org}/{repo}/actions/workflows/{workflow}/runs?per_page=1"
     r = requests.get(url, headers=HEADERS)
     if r.status_code != 200:
@@ -38,6 +37,7 @@ def get_github_status(org, repo, workflow):
     if not data.get("workflow_runs"):
         return {"status": "no runs found"}
     latest_run = data["workflow_runs"][0]
+    print(latest_run)
     return {
         "name": workflow,
         "status": latest_run["conclusion"] or "running",
