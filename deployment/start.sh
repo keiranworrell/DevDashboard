@@ -5,3 +5,4 @@ kubectl create secret generic gh-token-secret --from-literal=password=${GH_TOKEN
 kubectl apply -f backDeployment.yaml
 kubectl apply -f frontDeployment.yaml
 kubectl apply -f service.yaml
+kubectl apply -f ingress.yaml

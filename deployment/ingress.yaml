@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: devdash-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - host: devdash.local
+      http:
+        paths:
+          - path: /(status)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: dev-dash-back-service
+                port:
+                  number: 80
+          - path: /(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: dev-dash-frontend-service
+                port:
+                  number: 80
