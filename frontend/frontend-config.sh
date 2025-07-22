@@ -18,6 +18,7 @@ for org in ${orgList}; do
                 action=`echo ${action} | cut -f1 -d'.'`
                 actionLinks="${actionLinks}<li><div id=\"gh-status-${org}-${repo}-${action}\">Loading...</div></li>\n"
                 
+                sed -i "s|]|\"${org}-${repo}-${action}\", ]|" /usr/share/nginx/html/script.js
                 actionsArr="${actionsArr}\"${org}-${repo}-${action}\", "
             done
             actionLinks="${actionLinks}</ul>\n"
@@ -25,15 +26,11 @@ for org in ${orgList}; do
     done
 done
 
-echo "actionsArr:"
-echo "${actionsArr::-2}]"
-sed -i "s/[]/${actionsArr::-2}]/" /usr/share/nginx/html/script.js
-sleep 5
+sed -i "s|, ]|]|" /usr/share/nginx/html/script.js
 
 echo "repoLinks:"
 echo ${repoLinks}
 sed -i "s|<placeholder>|${repoLinks}|" /usr/share/nginx/html/index.html
-sleep 5
 
 echo "actionLinks:"
 echo ${actionLinks}
