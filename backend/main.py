@@ -39,7 +39,7 @@ def get_github_status(org, repo, workflow):
         return {"status": "no runs found"}
     latest_run = data["workflow_runs"][0]
     return {
-        "workflow": workflow,
+        "name": workflow,
         "status": latest_run["conclusion"] or "running",
         "url": latest_run["html_url"],
         "commit": latest_run["head_commit"]["message"],

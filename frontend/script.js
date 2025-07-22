@@ -20,4 +20,4 @@ async function updateStatus() {
 }
   
 updateStatus();
-setInterval(updateStatus, 5000); // Refresh every 5 seconds
+setInterval(updateStatus, 15000); // Refresh every 15 seconds
