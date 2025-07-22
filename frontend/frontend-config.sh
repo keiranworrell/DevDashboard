@@ -26,11 +26,14 @@ for org in ${orgList}; do
 done
 
 echo "actionsArr:"
-echo "${actionsArr::-1}]"
-sed -i "s|actions=[]|${actionsArr::-1}]|" /usr/share/nginx/html/script.js
+echo "${actionsArr::-2}]"
+sed -i "s|[]|${actionsArr::-2}]|" /usr/share/nginx/html/script.js
+sleep 5
+
 echo "repoLinks:"
 echo ${repoLinks}
 sed -i "s|<placeholder>|${repoLinks}|" /usr/share/nginx/html/index.html
+sleep 5
 
 echo "actionLinks:"
 echo ${actionLinks}
