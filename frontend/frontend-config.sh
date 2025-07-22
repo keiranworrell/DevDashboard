@@ -27,7 +27,7 @@ done
 
 echo "actionsArr:"
 echo "${actionsArr::-2}]"
-sed -i "s|[]|${actionsArr::-2}]|" /usr/share/nginx/html/script.js
+sed -i "s/[]/${actionsArr::-2}]/" /usr/share/nginx/html/script.js
 sleep 5
 
 echo "repoLinks:"
