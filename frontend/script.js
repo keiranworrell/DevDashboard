@@ -4,6 +4,7 @@ actions=[]
 async function updateStatus() {
     for (let action of actions) {
         try {
+            console.log("Calling API...");
             const res = await fetch('http://dev-dash-back/status/'.concat(action)); // Backend proxy endpoint
             const data = await res.json();
             const statusDiv = document.getElementById('gh-status-'.concat(action) + org);
