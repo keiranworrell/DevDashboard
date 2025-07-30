@@ -69,8 +69,12 @@ body {
   max-width: 600px;
   transition: border-color 0.3s ease;
   width: 300px;
+  height: 180px; /* Fixed height */
   background-color: #1e1e1e;
   color: #f0f0f0;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
 }
 
 .action-box h3 {
@@ -85,4 +89,11 @@ body {
 .status-text {
   font-weight: bold;
   text-transform: capitalize;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust 250px as needed */
+  gap: 16px;
+  padding: 16px;
 }
