@@ -61,14 +61,16 @@ body {
 }
 
 .action-box {
-  border: 3px solid;
-  border-radius: 10px;
-  padding: 1rem;
-  margin: 1rem;
+  border: 2px solid #ccc; /* 👈 ensures the border is visible */
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  transition: border-color 0.3s ease;
   width: 300px;
   background-color: #1e1e1e;
   color: #f0f0f0;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
 .action-box h3 {
