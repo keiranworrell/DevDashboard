@@ -21,6 +21,9 @@ async function updateStatus() {
             case 'failed':
                 borderColor = 'red';
                 break;
+            case 'cancelled':
+                borderColor = 'pink';
+                break;   
             case 'running':
                 borderColor = 'white';
                 break;
