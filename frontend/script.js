@@ -32,19 +32,15 @@ async function updateStatus() {
             // // Create a container div
             // const container = document.createElement('div');
             // container.className = 'action-box';
-            // container.style.borderColor = borderColor;
+            statusDiv.style.borderColor = borderColor;
 
             // Fill in content
-            container.innerHTML = `
+            statusDiv.innerHTML = `
             <h3>${title}</h3>
             <p>Status: <span class="status-text">${data.status}</span></p>
             <p>Last run: ${data.timestamp || 'N/A'}</p>
             <p><a href="${data.html_url}" target="_blank">View on GitHub</a></p>
             `;
-
-            // Append to parent
-            statusDiv.innerHTML = ''; // Clear old content
-            statusDiv.appendChild(container);
         } catch (err) {
             console.error(err);
         }
