@@ -61,7 +61,7 @@ body {
 }
 
 .action-box {
-  border: 2px solid #ccc; /* 👈 ensures the border is visible */
+  border: 4px solid #ccc; /* 👈 ensures the border is visible */
   border-radius: 8px;
   padding: 12px;
   margin-bottom: 16px;
