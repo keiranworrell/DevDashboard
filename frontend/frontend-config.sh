@@ -13,7 +13,7 @@ for org in ${orgList}; do
         echo "actionList:"
         echo ${actionList}
         if [[ ${actionList} != "null" && ${actionList} != "" && ${actionList} != "0" ]]; then
-            actionLinks="${actionLinks}<h2>${org}/${repo} - Actions</h2>\n"
+            actionLinks="${actionLinks}<h2>${org}/${repo} - Actions</h2>\n<br>\n"
             for action in ${actionList}; do
                 action=`echo ${action} | cut -f1 -d'.'`
                 actionLinks="${actionLinks}<div class=\"action-box\" id=\"gh-status-${org}-${repo}-${action}\">Loading...</div>\n"
@@ -21,6 +21,7 @@ for org in ${orgList}; do
                 sed -i "s|]|\"${org}-${repo}-${action}\", ]|" /usr/share/nginx/html/script.js
                 actionsArr="${actionsArr}\"${org}-${repo}-${action}\", "
             done
+            actionLinks="${actionLinks}<br>\n"
         fi
     done
 done

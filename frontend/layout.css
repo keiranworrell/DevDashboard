@@ -86,6 +86,30 @@ body {
   font-weight: bold;
 }
 
+.action-box a:link {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.action-box a:visited {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.action-box a:hover {
+  color: #CE5937;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.action-box a:active {
+  color: #CE5937;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
 .status-text {
   font-weight: bold;
   text-transform: capitalize;
