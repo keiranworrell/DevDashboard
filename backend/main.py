@@ -40,7 +40,7 @@ def get_github_status(org, repo, workflow):
     print(latest_run)
     return {
         "name": workflow,
-        "display_name": latest_run["display_title"],
+        "display_name": latest_run["name"],
         "status": latest_run["conclusion"] or "running",
         "url": latest_run["html_url"],
         "commit": latest_run["head_commit"]["message"],
