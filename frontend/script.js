@@ -43,7 +43,7 @@ async function updateStatus() {
             `;
 
             // Append to parent
-            statusContainer.innerHTML = ''; // Clear old content
+            statusDiv.innerHTML = ''; // Clear old content
             statusDiv.appendChild(container);
         } catch (err) {
             console.error(err);
