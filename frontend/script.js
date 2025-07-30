@@ -8,11 +8,42 @@ async function updateStatus() {
             const res = await fetch('/status/'.concat(action)); // Backend proxy endpoint
             const data = await res.json();
             const statusDiv = document.getElementById('gh-status-'.concat(action));
-            statusDiv.innerHTML = `
-                Workflow: ${data.name} <br>
-                Status: <span style="color:${data.status === 'success' ? 'green' : 'red'}">${data.status}</span> at ${data.timestamp}
-                <br><a href="${data.html_url}" target="_blank">View on GitHub</a>
+
+            // Determine display title (fallback to file name)
+            const title = data.name;
+
+            // Determine border color based on status
+            let borderColor;
+            switch (data.status) {
+            case 'success':
+                borderColor = 'green';
+                break;
+            case 'failed':
+                borderColor = 'red';
+                break;
+            case 'running':
+                borderColor = 'white';
+                break;
+            default:
+                borderColor = 'blue'; // No history
+                break;
+            }
+
+            // Create a container div
+            const container = document.createElement('div');
+            container.className = 'action-box';
+            container.style.borderColor = borderColor;
+
+            // Fill in content
+            container.innerHTML = `
+            <h3>${title}</h3>
+            <p>Status: <span class="status-text">${data.status}</span></p>
+            <p>Last run: ${data.timestamp || 'N/A'}</p>
+            <p><a href="${data.html_url}" target="_blank">View on GitHub</a></p>
             `;
+
+            // Append to parent
+            statusDiv.appendChild(container);
         } catch (err) {
             console.error(err);
         }
