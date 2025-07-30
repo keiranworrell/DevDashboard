@@ -29,10 +29,10 @@ async function updateStatus() {
                 break;
             }
 
-            // Create a container div
-            const container = document.createElement('div');
-            container.className = 'action-box';
-            container.style.borderColor = borderColor;
+            // // Create a container div
+            // const container = document.createElement('div');
+            // container.className = 'action-box';
+            // container.style.borderColor = borderColor;
 
             // Fill in content
             container.innerHTML = `
