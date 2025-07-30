@@ -79,3 +79,8 @@ body {
 .action-box .status-text {
   font-weight: bold;
 }
+
+.status-text {
+  font-weight: bold;
+  text-transform: capitalize;
+}
