@@ -68,7 +68,7 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-width: 600px;
   transition: border-color 0.3s ease;
-  width: 270px;
+  width: 280px;
   height: 150px; /* Fixed height */
   background-color: #1e1e1e;
   color: #f0f0f0;
@@ -79,7 +79,7 @@ body {
 
 .action-box h3 {
   margin-top: 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .action-box .status-text {
