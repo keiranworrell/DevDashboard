@@ -10,7 +10,7 @@ async function updateStatus() {
             const statusDiv = document.getElementById('gh-status-'.concat(action));
 
             // Determine display title (fallback to file name)
-            const title = data.name;
+            const title = data.display_name || data.name;
 
             // Determine border color based on status
             let borderColor;
@@ -38,7 +38,7 @@ async function updateStatus() {
             statusDiv.innerHTML = `
             <h3>${title}</h3>
             <p>Status: <span class="status-text">${data.status}</span></p>
-            <p>Last run: ${data.timestamp || 'N/A'}</p>
+            <p>Last run: #${data.run_number} - ${data.timestamp || 'N/A'}</p>
             <p><a href="${data.html_url}" target="_blank">View on GitHub</a></p>
             `;
         } catch (err) {

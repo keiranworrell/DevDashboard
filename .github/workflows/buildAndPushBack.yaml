@@ -1,4 +1,4 @@
-name: Build and push Docker image to dockerhub
+name: Backend Image CI
 
 on:
   push:
